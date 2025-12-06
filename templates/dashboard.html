@@ -1,0 +1,32 @@
+<h2>Students</h2>
+<table border="1">
+  <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+  {% for s in students %}
+    <tr>
+      <td>{{ s.id }}</td>
+      <td>{{ s.first_name }} {{ s.last_name }}</td>
+      <td><a href="{{ url_for('student_results', student_id=s.id) }}">View Results</a>
+        <form method="POST" action="{{ url_for('delete_student', student_id=s.id) }}" style="display:inline;">
+            <button type="submit" onclick="return confirm('Delete this student?')">Delete</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+<a href="{{ url_for('add_student') }}">Add Student</a>
+
+<h2>Quizzes</h2>
+<table border="1">
+  <tr><th>ID</th><th>Subject</th><th>Questions</th><th>Date</th></tr>
+  {% for q in quizzes %}
+    <tr>
+      <td>{{ q.id }}</td>
+      <td>{{ q.subject }}</td>
+      <td>{{ q.num_questions }}</td>
+      <td>{{ q.quiz_date }}</td>
+    </tr>
+  {% endfor %}
+
+</table>
+<a href="{{ url_for('add_quiz') }}">Add Quiz</a>
+<a href="{{ url_for('add_result') }}">Add Quiz Result</a>

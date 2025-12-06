@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Quiz</title>
+</head>
+<body>
+    <h2>Add a New Quiz</h2>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    <form method="POST" action="/quiz/add">
+        <label for="subject">Subject:</label>
+        <input type="text" name="subject" id="subject" required><br>
+
+        <label for="num_questions">Number of Questions:</label>
+        <input type="number" name="num_questions" id="num_questions" required><br>
+
+        <label for="quiz_date">Date:</label>
+        <input type="date" name="quiz_date" id="quiz_date" required><br>
+
+        <input type="submit" value="Add Quiz">
+    </form>
+    <p><a href="{{ url_for('dashboard') }}">Back to Dashboard</a></p>
+</body>
+</html>
